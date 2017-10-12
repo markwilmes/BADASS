@@ -13,8 +13,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private FusedLocationProviderClient mFusedLocationClient;
-    private LocationCallback mLocationCallback;
+    private com.google.android.gms.location.FusedLocationProviderClient mFusedLocationClient;
+    private com.google.android.gms.location.LocationCallback mLocationCallback;
+    private Boolean mRequestingLocationUpdates;
+    private com.google.android.gms.location.LocationRequest mLocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +27,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mFusedLocationClient = com.google.android.gms.location.LocationServices.getFusedLocationProviderClient(this);
         updateValuesFromBundle(savedInstanceState);
 
-        mLocationCallback = new LocationCallback() {
+        mLocationCallback = new com.google.android.gms.location.LocationCallback() {
             @Override
-            public void onLocationResult(LocationResult locationResult) {
-                for (Location location : locationResult.getLocations()) {
+            public void onLocationResult(com.google.android.gms.location.LocationResult locationResult) {
+                for (android.location.Location location : locationResult.getLocations()) {
                     // Update UI with location data
                     // ...
                 }
@@ -39,6 +41,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
 
     }
+
+
     protected void onResume() {
         super.onResume();
         if (mRequestingLocationUpdates) {
@@ -52,12 +56,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 null /* Looper */);
     }
 
+    protected void createLocationRequest() {
+        com.google.android.gms.location.LocationRequest mLocationRequest = new com.google.android.gms.location.LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY);
+    }
+
+    com.google.android.gms.location.LocationSettingsRequest.Builder builder = new com.google.android.gms.location.LocationSettingsRequest.Builder()
+            .addLocationRequest(mLocationRequest);
+
+    com.google.android.gms.location.LocationSettingsRequest.Builder builder = new com.google.android.gms.location.LocationSettingsRequest.Builder();
+
+// ...
+
+    com.google.android.gms.location.SettingsClient client = com.google.android.gms.location.LocationServices.getSettingsClient(this);
+    com.google.android.gms.tasks.Task<com.google.android.gms.location.LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
+
 mFusedLocationClient.getLastLocation()
-        .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-        @Override
-        public void onSuccess(Location location) {
+        .addOnSuccessListener(this, new com.google.android.gms.tasks.OnSuccessListener<android.location.Location>() {
+        public void onSuccess(android.location.Location) {
             // Got last known location. In some rare situations this can be null.
-            if (location != null) {
+            if (android.location.Location  != null) {
                 // Logic to handle location object
             }
         }
