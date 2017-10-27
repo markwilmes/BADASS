@@ -10,17 +10,17 @@ def hello():
 
 @app.route('/queryDB', methods=['POST'])
 def query():
-	if not request.json or not 'title' in request.json:
-		abort(400)
+	#if not request.json or not 'title' in request.json:
+	#	abort(400)
 
 	query = {
-	'username': request.json['username'],
-	'password': request.json['password']
+	'username': request.form['username'],
+	'password': request.form['password']
 	}
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
 	cursor = db.cursor()
 
-	cursor.execute("SELECT users FROM BADASS.authentication_database WHERE users = '" + query['username'] + "'' AND password = '" + query['password'] + "';")
+	cursor.execute("SELECT username FROM BADASS.authentication_database WHERE username = '" + query['username'] + "' AND password = '" + query['password'] + "';")
 
 	thing = ""
 
@@ -44,8 +44,10 @@ def insert():
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
 	cursor = db.cursor()
 
-	cursor.execute("INSERT into BADASS.authentication_database VALUES (" + data['username'] + "," + data['password'] + ";")
+	resp = cursor.execute("INSERT into BADASS.authentication_database VALUES ('" + data['username'] + "','" + data['password'] + "');")
+	db.commit()
+	return "data inserted!"
 
  
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)
