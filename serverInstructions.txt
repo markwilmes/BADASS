@@ -1,0 +1,14 @@
+SERVER INSTALLATION INSTRUCTIONS:
+this is where I learned how to set it up: https://www.jakowicz.com/flask-apache-wsgi/
+First start by installing apache2, pip, Flask, and wsgi support for apache
+Next you have to take the wsgi file, and the BADASS.py server file and put them in this directory: /var/www/BADASS. NOTE: Turn off debug mode in the BADASS.py server by deleting debug=True in the app.run() command.
+next you have to take the .conf file and put it in /etc/apache2/sites-available directory.
+run command a2ensite BADASS.conf
+the restart the apache request handler: /etc/init.d/apache2 restart
+You should be able to see the welcome screen at 10.0.0.205.
+NOTE: if you can't see it at 10.0.0.205 from another machine, or even your local machine your running the server on, then the configuration for the ip address its binding to needs to change. To do this run ifconfig, get the ip address of your machine, and change the value in the virtual tag in the config file to that address.
+To run the serverTest.py file, you need to run the BADASS.py file using python. make sure debug mode is on. You can run the server file anywhere, it doesn't need to be attached to apache for this test to work. Once you get the server running, you can then run serverTest.py using python
+If the output is Bob, its successful, if it errors, then either the database isn't configured on your machine, or there's some error I missed in the server (api).
+I'm working on getting the database setup, so the api (server) is incomplete and will change. 
+
+Contact me on slack if you have any questions. ~Mark
