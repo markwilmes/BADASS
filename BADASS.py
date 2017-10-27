@@ -1,16 +1,14 @@
 from flask import Flask
+from flask import request
 import MySQLdb
-import sys
+ 
+app = Flask(__name__)
+ 
+@app.route("/")
+def hello():
+    return "Welcome to the BADASS server"
 
-sys.path.insert(0, '/home/user/Dropbox/softDevMethodsTools/BADASS/RESTfulServer.py')
-
-server = Flask(__name__)
-
-@server.route('/')
-def index():
-	return "welcome to the page!"
-
-@server.route('/queryDB', methods=['POST'])
+@app.route('/queryDB', methods=['POST'])
 def query():
 	if not request.json or not 'title' in request.json:
 		abort(400)
@@ -32,25 +30,22 @@ def query():
 	return thing
 
 
-@server.route('/insertData', methods=['POST'])
+@app.route('/insertData', methods=['POST'])
 def insert():
-	if not request.json or not 'title' in request.json:
-		abort(400)
 
+	#input_json = request.get_from(force=True) # failing right here!!!
+	#if not request.json or not 'title' in request.json:
+	#	abort(400)
 	data = {
-	'username': request.json['username'],
-	'password': request.json['password']
+	'username': request.form['username'],
+	'password': request.form['password']
 	}
 
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
 	cursor = db.cursor()
 
-	cursor.execute("INSERT into BADASS.authentication_database VALUES (" + data.username + "," + data.password + ";")
+	cursor.execute("INSERT into BADASS.authentication_database VALUES (" + data['username'] + "," + data['password'] + ";")
 
-@server.route('/error', methods=['GET'])
-def error():
-
-
-
-if __name__ == '__main__':
-    server.run(debug=True)
+ 
+if __name__ == "__main__":
+    app.run(debug=True)
