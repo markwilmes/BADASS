@@ -3,7 +3,7 @@ drop table locations;
 drop table medical;
 
 create table users(id integer primary key, username varchar(40), password varchar(40));
-create table locations(id integer primary key, location_coord1 float, location_coord2 float, location_latitude float, location_longitude float);
+create table locations(id integer primary key, location_roughlat float, location_roughlong float, location_latitude float, location_longitude float);
 
 create table medical(id integer primary key, medical_flag boolean, medical_urgency integer);
 
