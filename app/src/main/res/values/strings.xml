@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">BADASS</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_message">Type message here</string>
+    <string name="send_nearby">Send to nearby users</string>
+    <string name="send_to_responder">Send to first responder</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+    <string name="hint_meds">Do you take any medicines or receive treatments on a regular basis?</string>
+    <string name="hint_meds_details">How long can you go without treatments before suffering life-threatening symptoms?</string>
+    <string-array name="meds">
+        <item>Less than 24 hours</item>
+        <item>1-3 days</item>
+        <item>3-7 days</item>
+        <item>1-2 weeks</item>
+        <item>More than 2 weeks</item>
+    </string-array>
+
 </resources>
