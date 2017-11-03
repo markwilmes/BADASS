@@ -1,6 +1,5 @@
 package com.teambadass.csci3308.badass;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,22 +10,24 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LoginPage extends AppCompatActivity {
+/**
+ * Created by markw on 11/3/2017.
+ */
 
+public class AccountCreationPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_create_account);
     }
 
-    protected void login(String username,String password){
-        Intent intent = new Intent(this, MainActivity.class);
+    public void submitAccount(String username, String password){
         try {
-            URL url = new URL("http://BADASSIPADDRESS/queryDB");
+            URL url = new URL("http://BADASSIPADDRESS/insertData");
 
-            JSONObject postParams = new JSONObject();
-            postParams.put("username",username);
-            postParams.put("password",password);
+            JSONObject params = new JSONObject();
+            params.put("username",username);
+            params.put("password",password);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000 /* milliseconds */);
@@ -34,11 +35,6 @@ public class LoginPage extends AppCompatActivity {
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
-
-            String cookie = conn.getResponseMessage();
-            if(cookie != null){
-                startActivity(intent);
-            }
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
