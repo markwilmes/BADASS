@@ -1,3 +1,6 @@
+create database BADASS;
+use BADASS;
+
 drop table users;
 drop table locations;
 drop table medical;
