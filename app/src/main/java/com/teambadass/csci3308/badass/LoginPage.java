@@ -1,5 +1,6 @@
 package com.teambadass.csci3308.badass;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     protected void sendData(String username,String password){
+        Intent intent = new Intent(this, MainActivity.class);
         try {
             URL url = new URL("http://BADASSIPADDRESS/queryDB");
 
@@ -32,6 +34,11 @@ public class LoginPage extends AppCompatActivity {
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
+
+            String cookie = conn.getResponseMessage();
+            if(cookie != null){
+                startActivity(intent);
+            }
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
