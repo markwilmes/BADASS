@@ -65,3 +65,5 @@ freeline_project_description.json
 /captures
 .externalNativeBuild
 >>>>>>> androidStudioStuff
+
+\.idea/
