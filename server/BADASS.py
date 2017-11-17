@@ -20,7 +20,7 @@ def query():
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
 	cursor = db.cursor()
 
-	cursor.execute("SELECT username FROM BADASS.authentication_database WHERE username = '" + query['username'] + "' AND password = '" + query['password'] + "';")
+	cursor.execute("SELECT username FROM BADASS.users WHERE username = '" + query['username'] + "' AND password = '" + query['password'] + "';")
 
 	thing = ""
 
@@ -44,7 +44,7 @@ def insert():
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
 	cursor = db.cursor()
 
-	resp = cursor.execute("INSERT into BADASS.authentication_database VALUES ('" + data['username'] + "','" + data['password'] + "');")
+	resp = cursor.execute("INSERT into BADASS.users VALUES (8,'" + data['username'] + "','" + data['password'] + "');")
 	db.commit()
 	return "data inserted!"
 
