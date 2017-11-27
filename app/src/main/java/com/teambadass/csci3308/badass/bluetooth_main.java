@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.
+import java.util.*;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -122,7 +122,7 @@ public class bluetooth_main extends AppCompatActivity {
 
     private void showPrinterPickDialog() {
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.layout_bluetooth);
+        dialog.setContentView(R.layout.activity_bluetooth_main);
         dialog.setTitle("Bluetooth Devices");
 
         if (bluetoothAdapter.isDiscovering()) {

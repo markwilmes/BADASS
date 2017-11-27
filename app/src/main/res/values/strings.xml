@@ -22,5 +22,7 @@
         <item>1-2 weeks</item>
         <item>More than 2 weeks</item>
     </string-array>
+    <string name="none_paired">No device paired</string>
+    <string name="none_found">No device found</string>
 
 </resources>
