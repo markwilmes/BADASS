@@ -10,13 +10,9 @@ import android.widget.EditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -56,23 +52,22 @@ public class MainActivity extends AppCompatActivity {
             String response = "";
 
             try {
-                url = new URL("http://10.0.0.187/queryDB");
+                url = new URL("http://10.233.8.59/queryDB");
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                conn.setRequestProperty("Accept","application/json");
+                conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
                 conn.setRequestMethod("POST");
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
 
                 JSONObject postParams = new JSONObject();
                 postParams.put("username", username);
                 postParams.put("password", password);
 
-                DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                os.writeBytes(postParams.toString());
+                System.out.println(postParams);
 
-                os.flush();
+                OutputStreamWriter os = new OutputStreamWriter(conn.getOutputStream());
+                os.write(postParams.toString());
+
+                //os.flush();
                 os.close();
 
 

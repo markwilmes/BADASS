@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void checkLocation() throws Exception {
-        FixedMapActivity activity = new FixedMapActivity();
-        activity.onCreate();
+        MapsActivity activity = new MapsActivity();
+        //activity.onCreate();
     }
 }
