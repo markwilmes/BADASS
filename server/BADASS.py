@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import MySQLdb
+from flask import jsonify
  
 app = Flask(__name__)
  
@@ -13,9 +14,10 @@ def query():
 	#if not request.json or not 'title' in request.json:
 	#	abort(400)
 
+	json_dict = request.get_json()
 	query = {
-	'username': request.form['username'],
-	'password': request.form['password']
+	'username': json_dict['username'],
+	'password': json_dict['password']
 	}
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
 	cursor = db.cursor()
@@ -36,9 +38,10 @@ def insert():
 	#input_json = request.get_from(force=True) # failing right here!!!
 	#if not request.json or not 'title' in request.json:
 	#	abort(400)
+	json_dict = request.get_json()
 	data = {
-	'username': request.form['username'],
-	'password': request.form['password']
+	'username': json_dict['username'],
+	'password': json_dict['password']
 	}
 
 	db = MySQLdb.connect(host="localhost",user="root",passwd="mysql",db="BADASS")
