@@ -52,6 +52,7 @@ public class bluetooth_main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_main);
         //check device support bluetooth or not
+        findViewsByIds();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(this, "Bluetooth is not available!", Toast.LENGTH_SHORT).show();

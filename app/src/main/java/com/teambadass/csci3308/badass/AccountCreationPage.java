@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -51,8 +50,6 @@ public class AccountCreationPage extends AppCompatActivity {
             params.put("password",password);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
@@ -61,7 +58,7 @@ public class AccountCreationPage extends AppCompatActivity {
 
             writer.write(params.toString());
 
-            writer.flush();
+            //writer.flush();
             writer.close();
 
         } catch (JSONException | IOException e) {

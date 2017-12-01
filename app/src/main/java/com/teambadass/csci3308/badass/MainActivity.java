@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected int login(String username, String password) {
+    protected void login(String username, String password) {
         Intent intent = new Intent(this, MainActivity.class);
         try {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             String response = "";
 
             try {
-                url = new URL("http://10.233.8.59/queryDB");
+                url = new URL("http://192.168.30.204/queryDB");
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
@@ -73,17 +73,18 @@ public class MainActivity extends AppCompatActivity {
 
                 int responseCode = conn.getResponseCode();
                 System.out.println(responseCode);
-                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                if (responseCode == 200) {
                     String line;
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     while ((line = br.readLine()) != null) {
                         response += line;
-                        System.out.println(response);
                     }
-                    return responseCode;
+                    if(response != null){
+                        Intent bluetooth = new Intent(this,bluetooth_main.class);
+                        startActivity(bluetooth);
+                    }
                 } else {
                     response = "";
-                    return responseCode;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -91,6 +92,5 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return 404;
     }
 }
