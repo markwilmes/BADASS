@@ -2,6 +2,9 @@ package com.teambadass.csci3308.badass;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +22,16 @@ public class AccountCreationPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+        EditText user = (EditText)findViewById(R.id.email);
+        EditText pass = (EditText)findViewById(R.id.password);
+        final String userString = user.getText().toString();
+        final String passString = pass.getText().toString();
+        final Button button = findViewById(R.id.email_sign_in_button);
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                submitAccount(userString,passString);
+            }
+        });
     }
 
     /*public void submitAccount(String username, String password){

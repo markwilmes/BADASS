@@ -3,6 +3,8 @@
     package="com.teambadass.csci3308.badass">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage"></activity>
-        <activity android:name=".AccountCreationPage"></activity>
+        <activity android:name=".BluetoothActivityFinal.ChatMain" />
+        <activity android:name=".BluetoothActivityFinal.DeviceListActivity" />
+        <activity android:name=".bluetooth_main" />
     </application>
 
 </manifest>
