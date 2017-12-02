@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
+/*
  * Created by markw on 11/3/2017.
  */
 
@@ -21,7 +21,7 @@ public class AccountCreationPage extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
     }
 
-    public void submitAccount(String username, String password){
+    /*public void submitAccount(String username, String password){
         try {
             URL url = new URL("http://10.0.0.77/insertData");
 
@@ -30,13 +30,13 @@ public class AccountCreationPage extends AppCompatActivity {
             params.put("password",password);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setReadTimeout(15000 *//* milliseconds *//*);
+            conn.setConnectTimeout(15000 *//* milliseconds *//*);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
