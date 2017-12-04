@@ -29,7 +29,7 @@ public class AccountCreationPage extends AppCompatActivity {
         final Button button = findViewById(R.id.email_sign_in_button);
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                submitAccount(userString,passString);
+                //submitAccount(userString,passString);
             }
         });
     }
