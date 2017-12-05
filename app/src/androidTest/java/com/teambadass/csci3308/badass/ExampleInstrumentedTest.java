@@ -22,5 +22,13 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.teambadass.csci3308.badass", appContext.getPackageName());
+        onView(withId(R.id.editText))
+                .perform(typeText("Bob"), closeSoftKeyboard());
+        onView(withId(R.id.editText3))
+                .perform(typeText("bobs_password"), closeSoftKeyboard());
+        onView(withId(R.id.button1)).perform(click());
+
+        onView(withId(R.id.MainActivity)).check(matches(isDisplayed()));
+
     }
 }
