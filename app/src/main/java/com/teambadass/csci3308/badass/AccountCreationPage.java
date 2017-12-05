@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -22,32 +23,45 @@ public class AccountCreationPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-        EditText user = (EditText)findViewById(R.id.email);
-        EditText pass = (EditText)findViewById(R.id.password);
-        final String userString = user.getText().toString();
-        final String passString = pass.getText().toString();
-        final Button button = findViewById(R.id.email_sign_in_button);
-        button.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                //submitAccount(userString,passString);
+        final EditText user = (EditText)findViewById(R.id.email);
+        final EditText pass = (EditText)findViewById(R.id.password);
+        Button button = (Button)findViewById(R.id.email_sign_in_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                final String userString = user.getText().toString();
+                final String passString = pass.getText().toString();
+                Thread accountThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        submitAccount(userString,passString);
+                    }
+                });
+                accountThread.start();
+
             }
         });
     }
 
     /*public void submitAccount(String username, String password){
         try {
-            URL url = new URL("http://10.0.0.77/insertData");
+            URL url = new URL("http://10.0.0.187/insertData");
 
             JSONObject params = new JSONObject();
             params.put("username",username);
             params.put("password",password);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 *//* milliseconds *//*);
-            conn.setConnectTimeout(15000 *//* milliseconds *//*);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
+
+            OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+
+            writer.write(params.toString());
+
+            //writer.flush();
+            writer.close();
+
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
