@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Intent accountCreation = new Intent(this,AccountCreationPage.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         final EditText user = (EditText) findViewById(R.id.editText);
         final EditText pass = (EditText) findViewById(R.id.editText3);
         final Button button = findViewById(R.id.button1);
+        final Button button1 = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 final String userString = user.getText().toString();
@@ -42,10 +44,15 @@ public class MainActivity extends AppCompatActivity {
                 loginThread.start();
             }
         });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(accountCreation);
+            }
+        });
     }
 
     protected void login(String username, String password) {
-        Intent intent = new Intent(this, MainActivity.class);
         try {
 
 

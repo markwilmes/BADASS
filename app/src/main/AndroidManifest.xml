@@ -23,6 +23,7 @@
         <activity android:name=".BluetoothActivityFinal.ChatMain" />
         <activity android:name=".BluetoothActivityFinal.DeviceListActivity" />
         <activity android:name=".bluetooth_main" />
+        <activity android:name=".AccountCreationPage" />
     </application>
 
 </manifest>
