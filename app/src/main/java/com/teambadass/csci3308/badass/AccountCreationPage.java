@@ -1,5 +1,6 @@
 package com.teambadass.csci3308.badass;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,6 +23,7 @@ public class AccountCreationPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Intent intent = new Intent(this,MainActivity.class);
         setContentView(R.layout.activity_create_account);
         final EditText user = (EditText)findViewById(R.id.email);
         final EditText pass = (EditText)findViewById(R.id.password);
@@ -33,7 +35,8 @@ public class AccountCreationPage extends AppCompatActivity {
                 Thread accountThread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        submitAccount(userString,passString);
+                        //submitAccount(userString,passString);
+                        startActivity(intent);
                     }
                 });
                 accountThread.start();
@@ -42,7 +45,7 @@ public class AccountCreationPage extends AppCompatActivity {
         });
     }
 
-    /*public void submitAccount(String username, String password){
+    public void submitAccount(String username, String password){
         try {
             URL url = new URL("http://10.0.0.187/insertData");
 
@@ -65,5 +68,5 @@ public class AccountCreationPage extends AppCompatActivity {
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

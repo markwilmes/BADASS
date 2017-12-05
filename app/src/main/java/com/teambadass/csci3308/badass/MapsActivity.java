@@ -1,4 +1,4 @@
-package com.teambadass.csci3308.badass;
+/*package com.teambadass.csci3308.badass;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -67,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         mFusedLocationClient.requestLocationUpdates(mLocationRequest,
                 mLocationCallback,
-                null /* Looper */);
+                null );
     }
     protected void createLocationRequest() {
             com.google.android.gms.location.LocationRequest mLocationRequest = new com.google.android.gms.location.LocationRequest();
@@ -90,11 +90,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         }});
 
-    /* we just add a marker near Sydney, Australia.
-    * If Google Play services is not installed on the device, the user will be prompted to install
-    * it inside the SupportMapFragment. This method will only be triggered once the user has
-    * installed Google Play services and returned to the app.
-    */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -119,4 +115,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Update UI to match restored state
         updateUI();
     }
-}
+}*/
