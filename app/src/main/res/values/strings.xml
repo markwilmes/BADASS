@@ -66,5 +66,8 @@
 
         ]]>
     </string>
+    <string name="text_location_permission" />
+    <string name="title_location_permission" />
+    <string name="ok" />
 
 </resources>
