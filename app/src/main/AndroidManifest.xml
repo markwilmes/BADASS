@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage" />
-        <activity android:name=".bluetooth_main"></activity>
+        <activity android:name=".BluetoothActivityFinal.ChatMain" />
+        <activity android:name=".BluetoothActivityFinal.DeviceListActivity" />
+        <activity android:name=".bluetooth_main" />
     </application>
 
 </manifest>

@@ -30,6 +30,14 @@ public class LoginPage extends AppCompatActivity {
                 login(userString,passString);
             }
         });
+        final Button button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), AccountCreationPage.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     protected void login(String username,String password){

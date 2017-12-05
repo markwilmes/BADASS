@@ -14,7 +14,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
+/*
  * Created by markw on 11/3/2017.
  */
 
@@ -37,11 +37,12 @@ public class AccountCreationPage extends AppCompatActivity {
                     }
                 });
                 accountThread.start();
+
             }
         });
     }
 
-    public void submitAccount(String username, String password){
+    /*public void submitAccount(String username, String password){
         try {
             URL url = new URL("http://10.0.0.187/insertData");
 
@@ -64,5 +65,5 @@ public class AccountCreationPage extends AppCompatActivity {
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
