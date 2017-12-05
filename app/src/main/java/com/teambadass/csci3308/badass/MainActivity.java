@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.teambadass.csci3308.badass.BluetoothActivityFinal.ChatMain;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         response += line;
                     }
                     if(response != null){
-                        Intent bluetooth = new Intent(this,bluetooth_main.class);
+                        Intent bluetooth = new Intent(this,ChatMain.class);
                         startActivity(bluetooth);
                     }
                 } else {
