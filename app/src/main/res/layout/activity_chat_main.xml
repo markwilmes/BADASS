@@ -13,7 +13,6 @@
 
 
 
-
     <ViewAnimator
         android:id="@+id/sample_output"
         android:layout_width="wrap_content"
@@ -53,7 +52,9 @@
         android:id="@+id/sample_content_fragment"
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="2" />
+        android:layout_weight="2" >
+
+    </FrameLayout>
 
 
 </LinearLayout>

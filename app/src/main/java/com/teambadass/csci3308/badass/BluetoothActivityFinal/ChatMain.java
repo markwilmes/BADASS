@@ -32,7 +32,7 @@ public class ChatMain extends SampleActivityBase {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.bluetooth_chat, menu);
         return true;
     }
     @Override
@@ -61,7 +61,7 @@ public class ChatMain extends SampleActivityBase {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Create a chain of targets that will receive log data */
+    /*
     @Override
     public void initializeLogging() {
         // Wraps Android's native log framework.
@@ -80,6 +80,6 @@ public class ChatMain extends SampleActivityBase {
 
         Log.i(TAG, "Ready");
     }
-
+    */
 
 }

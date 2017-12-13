@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -23,8 +23,6 @@
     <style name="Widget.SampleMessage">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
-    </style>
-    <style name="Theme.Base" parent="android:Theme.Material.Light">
     </style>
     <style name="Widget.SampleMessageTile">
 

@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             String response = "";
 
             try {
-                url = new URL("http://192.168.30.204/queryDB");
+                url = new URL("http://10.233.8.59/queryDB");
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");

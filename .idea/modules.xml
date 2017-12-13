@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BADASS.iml" filepath="$PROJECT_DIR$/BADASS.iml" />
       <module fileurl="file://C:\Users\adam\Desktop\Badass\BADASS\BADASS.iml" filepath="C:\Users\adam\Desktop\Badass\BADASS\BADASS.iml" />
+      <module fileurl="file://C:\Users\lorit\Desktop\BADASS\BADASS.iml" filepath="C:\Users\lorit\Desktop\BADASS\BADASS.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\adam\Desktop\Badass\BADASS\app\app.iml" filepath="C:\Users\adam\Desktop\Badass\BADASS\app\app.iml" />
+      <module fileurl="file://C:\Users\lorit\Desktop\BADASS\app\app.iml" filepath="C:\Users\lorit\Desktop\BADASS\app\app.iml" />
     </modules>
   </component>
 </project>

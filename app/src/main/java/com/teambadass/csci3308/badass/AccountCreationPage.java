@@ -47,7 +47,7 @@ public class AccountCreationPage extends AppCompatActivity {
 
     public void submitAccount(String username, String password){
         try {
-            URL url = new URL("http://10.0.0.187/insertData");
+            URL url = new URL("http://10.233.8.59/insertData");
 
             JSONObject params = new JSONObject();
             params.put("username",username);

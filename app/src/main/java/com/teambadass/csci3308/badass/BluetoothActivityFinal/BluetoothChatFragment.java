@@ -30,6 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.teambadass.csci3308.badass.R;
 
 public class BluetoothChatFragment extends Fragment {
@@ -44,6 +45,9 @@ public class BluetoothChatFragment extends Fragment {
     private ListView mConversationView;
     private EditText mOutEditText;
     private Button mSendButton;
+    private Button mSecureButton;
+    private Button mInsecureButton;
+    private Button mDiscoverableButton;
 
     /**
      * Name of the connected device
@@ -69,6 +73,7 @@ public class BluetoothChatFragment extends Fragment {
      * Member object for the chat services
      */
     private BluetoothChatService mChatService = null;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -135,6 +140,12 @@ public class BluetoothChatFragment extends Fragment {
         mConversationView = (ListView) view.findViewById(R.id.in);
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
+        mSecureButton = (Button) view.findViewById(R.id.secure_button);
+        mInsecureButton = (Button) view.findViewById(R.id.insecure_button);
+        mDiscoverableButton = (Button) view.findViewById(R.id.discoverable_button);
+        System.out.println(view.findViewById(R.id.discoverable_button));
+        System.out.println(view.findViewById(R.id.insecure_button));
+        System.out.println(view.findViewById(R.id.secure_button));
     }
 
     /**
@@ -161,6 +172,41 @@ public class BluetoothChatFragment extends Fragment {
                     String message = textView.getText().toString();
                     sendMessage(message);
                 }
+            }
+        });
+
+        mSecureButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                View v = getView();
+                if(null != v){
+                    Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
+                    startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
+                }
+
+            }
+        });
+
+        mInsecureButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                View v = getView();
+                if (null != v) {
+                    Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
+                    startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
+                }
+            }
+        });
+
+        mDiscoverableButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                View v = getView();
+                if(null != v){
+                    ensureDiscoverable();
+                }
+
             }
         });
 
@@ -360,8 +406,9 @@ public class BluetoothChatFragment extends Fragment {
 
     }
 
+    /*
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected() {
         switch (item.getItemId()) {
             case R.id.secure_connect_scan: {
                 // Launch the DeviceListActivity to see devices and do scan
@@ -383,7 +430,7 @@ public class BluetoothChatFragment extends Fragment {
         }
         return false;
     }
-
+    */
 
 
 }
