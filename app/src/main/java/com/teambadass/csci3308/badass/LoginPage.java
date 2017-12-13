@@ -43,7 +43,7 @@ public class LoginPage extends AppCompatActivity {
     protected void login(String username,String password){
         Intent intent = new Intent(this, MainActivity.class);
         try {
-            URL url = new URL("http://10.0.0.77/queryDB");
+            URL url = new URL("http://10.0.0.136/queryDB");
 
             JSONObject postParams = new JSONObject();
             postParams.put("username",username);
